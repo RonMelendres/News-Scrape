@@ -1,4 +1,5 @@
 var express = require("express");
+var exphbs = require("express-handlebars")
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var axios = require("axios");
@@ -13,8 +14,10 @@ var app = express();
 app.use(logger("dev"));
 
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.json());
+
+app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
 

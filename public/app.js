@@ -2,6 +2,7 @@ $.getJSON("/articles", function (data) {
     for (var i = 0; i < data.length; i++) {
         $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br / >" + data[i].link + "</p>");
     }
+    
 })
 
 $(document).on("click", "p", function () {
@@ -25,6 +26,8 @@ $(document).on("click", "p", function () {
                 $("#bodyinput").val(data.note.body);
             }
         });
+        
+
 });
 
 $(document).on("click", "#savenote", function () {
