@@ -16,12 +16,29 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost/9000", { useNewUrlParser: true });
+
+app.get("/", function (req, res) {
+    db.Article.find({})
+        .then(function (dbArticle) {
+
+            var stuff = {
+                article: dbArticle,
+            }
+
+            res.render("index", stuff);
+            console.log(dbArticle);
+            
+        }).catch(function (err) {
+            res.json(err);
+            
+        });
+});
 
 app.get("/scrape", function (req, res) {
     axios.get("https://abcnews.go.com/").then(function (response) {

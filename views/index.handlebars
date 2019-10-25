@@ -11,15 +11,35 @@
 
 
         <div id="articles">
-            {{#each articlespost}}
-            <div id="articlepost" class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+            
+            {{!-- <div class="card" style="width: 18rem;">
+                {{!-- <img src="..." class="card-img-top" alt="..."> --}}
                 <div class="card-body">
-                    <p class="card-text"></p>
+
+                    <h5 class="card-title">Title</h5>
+
+                    <a href="#" class="card-link">Link</a>
+
+
+                </div>
+            </div> --}}
+
+            {{#each articles}}
+
+            <div class="card" style="width: 18rem;">
+                {{!-- <img src="..." class="card-img-top" alt="..."> --}}
+                <div class="card-body">
+
+                    <h5 class="card-title">{{title}}</h5>
+
+                    <a href="{{link}}" class="card-link">{{link}}</a>
+
 
                 </div>
             </div>
+
             {{/each}}
+
         </div>
 
         <div id="notes"></div>
