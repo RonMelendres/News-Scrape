@@ -19,6 +19,9 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/9000";
+
+
 app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost/9000", { useNewUrlParser: true });
@@ -106,4 +109,6 @@ app.post("/articles/:id", function (req, res) {
 app.listen(PORT, function () {
     console.log("App running on port " + PORT + "!");
 });
+
+mongoose.connect(MONGODB_URI);
 
